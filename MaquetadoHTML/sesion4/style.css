@@ -1,0 +1,51 @@
+* {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  
+  .position__container > .position__box {
+    width: 90px;
+    height: 90px;
+    border: 2px solid black;
+    margin: 10px;
+  }
+  
+  .position__box--yellow {
+    background-color: yellow;
+    position: static;
+  }
+  
+  /* Relativo a posicion original */
+  .position__box--green {
+    background-color: green;
+    position: relative;
+    top: 40px;
+    left: 40px;
+    bottom: 40px;
+  }
+  
+  /* Relativo al viewport */
+  .position__box--blue {
+    background-color: blue;
+    position: fixed;
+    left: 50%;
+    top: 60px;
+  }
+  
+  .position__box--red {
+    background-color: red;
+    position: sticky;
+    top: 20px;
+  }
+  
+  .position__box--purple {
+    background-color: purple;
+  }
+  
+
+  header {
+    position: sticky;
+    top: 0px;
+    background-color: black;
+    color: white;
+  }

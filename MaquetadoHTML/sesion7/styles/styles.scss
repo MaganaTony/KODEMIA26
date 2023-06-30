@@ -1,0 +1,40 @@
+@import "./vars.scss";
+@mixin flex__standard-box($box-color, $box-width, $box-height: 90px) {
+    width: $box-width;
+    height: $box-height;
+    border: 2px solid black;
+    background-color: $box-color;
+    margin: 10px;
+}
+
+.main__container {
+    .main__container--item {
+        color: $primary-color;
+
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
+
+
+.flex__container {
+    display: flex;
+    justify-content: center;
+
+    .flex__box {
+        width: 90px;
+        height: 90px;
+        border: 2px solid black;
+        background-color: $primary-bg;
+        margin: 10px;
+    }
+}
+
+.demo__box {
+    @include flex__standard-box($box-color:red, $box-width: 100px);
+}
+
+.second__box{
+    @include flex__standard-box($box-color:green, $box-width:10px, $box-height: 90px);
+}

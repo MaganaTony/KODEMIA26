@@ -1,0 +1,89 @@
+h1,p, span{
+    color: hotpink;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.title_span--green {
+    color: green;
+    font-size: 200%;
+}
+.title_span{
+    font-size: 300%;
+}
+.specific-selectors_list > li#xolos {
+    color: rgb(99, 1, 1);
+    font-weight: bold;
+}
+
+/* #xolos + .team-america_li{
+    color: rgb(88, 101, 18);
+    font-weight: bold;
+} */
+
+/* .specific-selectors_list > .team-america_li {
+    color: rgb(88, 101, 18);
+    font-weight: bold;
+} */
+
+/* #teams-list > .team-america_li {
+    color: rgb(88, 101, 18);
+    font-weight: bold;
+} */
+#teams-list > li.team-futbol_li {
+    color: rgb(88, 101, 18);
+    font-weight: bold;
+}
+
+#music-genre > li{
+    list-style: none;
+}
+
+.random-text_paragraph ~ p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: 900;
+    color: rgb(27, 61, 92);
+}
+.pseudo-selectors_button{
+    width: 180px;
+    height: 45px;
+    padding: 10px;
+    border-style:none;
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pseudo-selectors_button:active{
+    background-color: blueviolet;
+    font-weight: bold;
+}
+
+.pseudo-selector_button--hover{
+    width: 180px;
+    height: 45px;
+    padding: 10px;
+    border-style:none;
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.pseudo-selector_button--hover:hover{
+    background-color: aqua;
+    font-weight: 900;
+    border: 2px solid green;
+    width: 190px;
+    height: 60px;
+}
+
+/* First child */
+ .holidays_list :first-child{
+    color: blueviolet;
+    font-size: 200%;
+ }
+
+ .salad_list .salad_item:first-child{
+    color: blueviolet;
+    font-size: 200%;
+ }
