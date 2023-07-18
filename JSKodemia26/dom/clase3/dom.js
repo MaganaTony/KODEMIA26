@@ -23,24 +23,34 @@ form.addEventListener('submit', (event) => {
 });
 
 const domDisplay = (userObject) => {
-    //Imagen
+    //Container
     const container = document.querySelector('.container')
+
+    //CARD
+    const thenewCard = document.createElement('div');
+    thenewCard.setAttribute('class', 'card-container');
+     container.appendChild(thenewCard)
+    //Imagen
     const avatarimage = document.createElement('img')
     avatarimage.setAttribute('src', userObject.avatar)
-    avatarimage.style.width='150px'
-    container.appendChild(avatarimage)
+    avatarimage.style.width='100px'
+    thenewCard.appendChild(avatarimage)
+    //ContainerText
+    const containerText = document.createElement('div')
+    containerText.setAttribute('class', 'container-text')
+    thenewCard.appendChild(containerText)
     //Info
     const name = document.createElement('h2'); 
     name.textContent = userObject.nombre;
-    container.appendChild(name)
+    containerText.appendChild(name)
 
     const surname =document.createElement('h2'); 
     surname.textContent = userObject.apellido;
-    container.appendChild(surname)
+    containerText.appendChild(surname)
 
     const age = document.createElement('h2');
     age.textContent = userObject.edad;
-    container.appendChild(age)
+    containerText.appendChild(age)
 
 }
 
