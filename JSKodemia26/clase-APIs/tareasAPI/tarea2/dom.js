@@ -1,6 +1,4 @@
 const form = document.querySelector("#user-form");
-const users = [];
-
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -32,7 +30,7 @@ const getData = async () => {
     if (response.status === 200) {
       const data = await response.json();
       const array = Object.entries(data);
-      array.map((item) => {
+      const maparray = array.map((item) => {
         const personaObject = {
           id: item[0],
           name: item[1].nombre,
@@ -40,45 +38,9 @@ const getData = async () => {
           country: item[1].country,
           avatar: item[1].avatar,
         };
-        console.log(personaObject.country);
-
-        //Container
-        const container = document.querySelector(".container");
-
-        //CARD
-        const thenewCard = document.createElement("div");
-        thenewCard.setAttribute("class", "card-container");
-        container.appendChild(thenewCard);
-        //Imagen
-        const avatarimage = document.createElement("img");
-        avatarimage.setAttribute("src", personaObject.avatar);
-        avatarimage.style.width = "80px";
-        thenewCard.appendChild(avatarimage);
-        //ContainerText
-        const containerText = document.createElement("div");
-        containerText.setAttribute("class", "container-text");
-        thenewCard.appendChild(containerText);
-        //Info
-        const name = document.createElement("h2");
-        name.textContent = personaObject.nombre;
-        containerText.appendChild(name);
-
-        const fechaData = document.createElement("h2");
-        fechaData.textContent = personaObject.fecha;
-        containerText.appendChild(fechaData);
-
-        const countryData = document.createElement("h2");
-        countryData.textContent = personaObject.country;
-        containerText.appendChild(countryData);
-        //DELETE BUTTON
-        const deleteButton = document.createElement("button");
-        deleteButton.setAttribute("class", "btn-close");
-        deleteButton.setAttribute("type", "button");
-        deleteButton.style.width = "10px";
-        deleteButton.style.height = "18px";
-        deleteButton.style.backgroundColor = "red";
-        thenewCard.appendChild(deleteButton);
+        createContainer(personaObject)
       });
+      
     } else {
       alert("Hubo un error");
     }
@@ -88,6 +50,46 @@ const getData = async () => {
 };
 
 getData();
+
+const createContainer = (funcion) => {
+ //Container
+ const container = document.querySelector(".container");
+
+ //CARD
+ const thenewCard = document.createElement("div");
+ thenewCard.setAttribute("class", "card-container");
+ container.appendChild(thenewCard);
+ //Imagen
+ const avatarimage = document.createElement("img");
+ avatarimage.setAttribute("src", funcion.avatar);
+ avatarimage.style.width = "80px";
+ thenewCard.appendChild(avatarimage);
+ //ContainerText
+ const containerText = document.createElement("div");
+ containerText.setAttribute("class", "container-text");
+ thenewCard.appendChild(containerText);
+ //Info
+ const name = document.createElement("h2");
+ name.textContent = funcion.nombre;
+ containerText.appendChild(name);
+
+ const fechaData = document.createElement("h2");
+ fechaData.textContent = funcion.fecha;
+ containerText.appendChild(fechaData);
+
+ const countryData = document.createElement("h2");
+ countryData.textContent = funcion.country;
+ containerText.appendChild(countryData);
+ //DELETE BUTTON
+ const deleteButton = document.createElement("button");
+ deleteButton.setAttribute("class", "btn-close");
+ deleteButton.setAttribute("id", "delbutton");
+ deleteButton.setAttribute("type", "button");
+ deleteButton.style.width = "10px";
+ deleteButton.style.height = "18px";
+ deleteButton.style.backgroundColor = "red";
+ thenewCard.appendChild(deleteButton);   
+}
 
 const createData = async (userdata) => {
   const response = await fetch(
@@ -107,3 +109,12 @@ const deleteData = async (id) => {
     }
   );
 };
+
+const btn = document.querySelectorAll(".btn-close")
+console.log(btn);
+btn.forEach(button => {
+  console.log(button);
+  button.addEventListener("click", (e) => {
+    console.log(e.target);
+  })
+});
