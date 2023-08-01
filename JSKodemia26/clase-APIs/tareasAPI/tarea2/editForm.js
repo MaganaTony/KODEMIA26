@@ -63,9 +63,6 @@ const getData = async (id) => {
     updateDataById(urlID, userInfo);
   });
 
-
-
-
   const updateDataById = async(id, updatedData) => {
     const response = await fetch(`https://kodemia26-default-rtdb.firebaseio.com/${id}.json`,{
         method: 'PATCH',
@@ -74,4 +71,9 @@ const getData = async (id) => {
         },
         body: JSON.stringify(updatedData)
     });
+    ButtonRedirection()
 };
+
+const ButtonRedirection = () => {
+    window.location.href = `http://127.0.0.1:3000/clase-APIs/tareasAPI/tarea2/index.html`
+  }
