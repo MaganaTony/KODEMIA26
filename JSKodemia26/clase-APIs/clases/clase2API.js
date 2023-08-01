@@ -64,7 +64,7 @@ const getDatabyId = async (id) => {
 // PUT sobreescribe el registro
 // PATCH actualiza solo lo que le envies en el body
 const updateDataById = async() => {
-    const response = await fetch('https://kodemia26-default-rtdb.firebaseio.com/-NaK3MD53OhP6oVXr1RK.json',{
+    const response = await fetch('https://kodemia26-default-rtdb.firebaseio.com/.json',{
         method: 'PATCH',
         headers: {
             "Content-type": "application/json;charset=UTF-8"
@@ -74,4 +74,4 @@ const updateDataById = async() => {
     const data = await response.json()
     console.log(data)
 };
-updateDataById();
+//updateDataById();

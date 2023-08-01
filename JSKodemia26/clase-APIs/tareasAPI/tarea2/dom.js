@@ -14,8 +14,6 @@ form.addEventListener("submit", (event) => {
     country: country.value,
     avatar: avatar.value,
   };
-
-  users.push(userInfo);
   createData(userInfo);
 });
 
@@ -30,6 +28,7 @@ const getData = async () => {
     if (response.status === 200) {
       const data = await response.json();
       const array = Object.entries(data);
+      console.log(array);
       const maparray = array.map((item) => {
         const personaObject = {
           id: item[0],
@@ -38,6 +37,7 @@ const getData = async () => {
           country: item[1].country,
           avatar: item[1].avatar,
         };
+        
         createContainer(personaObject)
       });
       
@@ -70,7 +70,7 @@ const createContainer = (funcion) => {
  thenewCard.appendChild(containerText);
  //Info
  const name = document.createElement("h2");
- name.textContent = funcion.nombre;
+ name.textContent = funcion.name;
  containerText.appendChild(name);
 
  const fechaData = document.createElement("h2");
@@ -83,12 +83,31 @@ const createContainer = (funcion) => {
  //DELETE BUTTON
  const deleteButton = document.createElement("button");
  deleteButton.setAttribute("class", "btn-close");
- deleteButton.setAttribute("id", "delbutton");
+ deleteButton.setAttribute("id", funcion.id);
  deleteButton.setAttribute("type", "button");
  deleteButton.style.width = "10px";
  deleteButton.style.height = "18px";
  deleteButton.style.backgroundColor = "red";
  thenewCard.appendChild(deleteButton);   
+ deleteButton.addEventListener("click", (e) => {
+  const buttonID = e.target.id
+  console.log(buttonID);
+  deleteData(buttonID)
+})
+  //EDIT BUTTON
+  const editButton = document.createElement('button')
+  editButton.setAttribute("class", "btn-close");
+  editButton.setAttribute("id", funcion.id);
+  editButton.setAttribute("type", "button");
+  editButton.style.width = "10px";
+  editButton.style.height = "18px";
+  editButton.style.backgroundColor = "green";
+  thenewCard.appendChild(editButton)
+  editButton.addEventListener("click", (e) => {
+    const editButtonID = e.target.id
+    console.log(editButtonID);
+    ButtonRedirection(editButtonID)
+  })
 }
 
 const createData = async (userdata) => {
@@ -99,7 +118,13 @@ const createData = async (userdata) => {
       body: JSON.stringify(userdata),
     }
   );
+  if (response.status === 200) {
+    location.reload()
+  } else {
+    console.log("Hubo un error al postear");
+  }
 };
+
 
 const deleteData = async (id) => {
   const response = await fetch(
@@ -107,14 +132,14 @@ const deleteData = async (id) => {
     {
       method: "DELETE",
     }
-  );
+  ); 
+  if (response.status === 200) {
+    location.reload()
+  } else
+  console.log('Hubo un error al borrar');
 };
 
-const btn = document.querySelectorAll(".btn-close")
-console.log(btn);
-btn.forEach(button => {
-  console.log(button);
-  button.addEventListener("click", (e) => {
-    console.log(e.target);
-  })
-});
+
+const ButtonRedirection = (id) => {
+  window.location.href = `http://127.0.0.1:3000/clase-APIs/tareasAPI/tarea2/editForm.html?id=${id}`
+}
